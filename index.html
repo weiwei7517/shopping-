@@ -4,227 +4,475 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>韓國代購清單</title>
+<title>韓國代購管理</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    background: #f7f7f5;
-    color: #333;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-                 "PingFang TC", "Noto Sans TC", sans-serif;
+body{
+    margin:0;
+    background:#f6f6f4;
+    color:#333;
+    font-family:-apple-system,BlinkMacSystemFont,
+    "Helvetica Neue","PingFang TC","Noto Sans TC",
+    "Microsoft JhengHei",sans-serif;
 }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    padding: 20px 15px 40px;
+button,
+input{
+    font-family:inherit;
 }
 
-/* 標題 */
-.header {
-    text-align: center;
-    padding: 15px 0 20px;
+.container{
+    max-width:760px;
+    margin:auto;
+    padding:18px 14px 50px;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 25px;
-    letter-spacing: 1px;
+/* ==================== 標題 ==================== */
+
+.header{
+    text-align:center;
+    padding:10px 0 20px;
 }
 
-.header p {
-    margin: 8px 0 0;
-    color: #888;
-    font-size: 13px;
+.header h1{
+    margin:0;
+    font-size:26px;
+    letter-spacing:1px;
 }
 
-/* 匯率 */
-.rate-box {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+.header p{
+    margin:7px 0 0;
+    color:#999;
+    font-size:13px;
 }
 
-.rate-title {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 8px;
+/* ==================== 匯率 ==================== */
+
+.rate-box{
+    background:#fff;
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
 }
 
-.rate-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.rate-title{
+    font-size:13px;
+    color:#888;
+    margin-bottom:8px;
 }
 
-.rate-row input {
-    width: 100px;
+.rate-row{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:14px;
 }
 
-/* 統計 */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 15px;
+.rate-row input{
+    width:90px;
+    padding:8px 10px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:14px;
 }
 
-.stat {
-    background: white;
-    border-radius: 13px;
-    padding: 12px 5px;
-    text-align: center;
+/* ==================== 統計 ==================== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin-bottom:14px;
 }
 
-.stat-number {
-    font-size: 20px;
-    font-weight: bold;
+.stat{
+    background:#fff;
+    border-radius:13px;
+    padding:11px 4px;
+    text-align:center;
 }
 
-.stat-label {
-    font-size: 12px;
-    color: #888;
-    margin-top: 3px;
+.stat-number{
+    font-size:19px;
+    font-weight:700;
 }
 
-/* 新增 */
-.add-box {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+.stat-label{
+    font-size:11px;
+    color:#999;
+    margin-top:3px;
 }
 
-.add-box h2 {
-    font-size: 16px;
-    margin: 0 0 12px;
+/* ==================== 篩選 ==================== */
+
+.filter-box{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding-bottom:3px;
+    margin-bottom:14px;
 }
 
-.form {
-    display: grid;
-    gap: 9px;
+.filter-btn{
+    flex:0 0 auto;
+    background:#fff;
+    color:#666;
+    border:1px solid #e3e3e3;
+    border-radius:20px;
+    padding:8px 13px;
+    font-size:13px;
 }
 
-input, select {
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 9px;
-    padding: 11px;
-    font-size: 14px;
-    background: #fff;
+.filter-btn.active{
+    background:#333;
+    color:#fff;
+    border-color:#333;
 }
 
-button {
-    border: none;
-    border-radius: 9px;
-    padding: 11px;
-    font-size: 14px;
-    cursor: pointer;
+/* ==================== 新增 ==================== */
+
+.add-box{
+    background:#fff;
+    border-radius:17px;
+    padding:16px;
+    margin-bottom:16px;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
 }
 
-.add-btn {
-    background: #333;
-    color: white;
+.add-title{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:13px;
 }
 
-/* 清單 */
-.list-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 2px 10px;
+.form{
+    display:grid;
+    gap:9px;
 }
 
-.list-title h2 {
-    font-size: 17px;
-    margin: 0;
+.form input{
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:9px;
+    padding:11px 12px;
+    font-size:14px;
+    outline:none;
 }
 
-.item {
-    background: white;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+.form input:focus{
+    border-color:#aaa;
 }
 
-.item-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+.price-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
 }
 
-.customer {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 4px;
+.preview{
+    background:#f6f6f4;
+    border-radius:9px;
+    padding:10px 12px;
+    color:#777;
+    font-size:13px;
 }
 
-.product {
-    font-size: 17px;
-    font-weight: 600;
+.save-btn{
+    width:100%;
+    background:#333;
+    color:#fff;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    font-size:14px;
+    margin-top:2px;
 }
 
-.price {
-    text-align: right;
+/* ==================== 打勾選單 ==================== */
+
+.check-row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
-.krw {
-    font-size: 15px;
-    font-weight: bold;
+.check{
+    position:relative;
 }
 
-.twd {
-    font-size: 12px;
-    color: #888;
-    margin-top: 3px;
+.check input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
 }
 
-.status-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 13px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
+.check label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    padding:9px 12px;
+    font-size:13px;
+    color:#777;
+    cursor:pointer;
+    user-select:none;
 }
 
-.status-select {
-    width: auto;
-    padding: 7px 10px;
-    font-size: 13px;
+.check-box{
+    width:17px;
+    height:17px;
+    border:1px solid #bbb;
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
 }
 
-.delete-btn {
-    background: #f1f1f1;
-    color: #777;
-    padding: 7px 10px;
-    font-size: 12px;
+.check input:checked + label{
+    background:#333;
+    color:#fff;
+    border-color:#333;
 }
 
-.empty {
-    text-align: center;
-    color: #aaa;
-    padding: 35px 0;
+.check input:checked + label .check-box{
+    border-color:#fff;
+    background:#fff;
+    color:#333;
 }
 
-/* 手機 */
-@media (max-width: 500px) {
-    .container {
-        padding: 15px 12px 30px;
+.field-title{
+    font-size:12px;
+    color:#888;
+    margin:3px 0 6px;
+}
+
+/* ==================== 清單 ==================== */
+
+.list-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:18px 2px 10px;
+}
+
+.list-header h2{
+    margin:0;
+    font-size:17px;
+}
+
+.list-header span{
+    color:#999;
+    font-size:12px;
+}
+
+/* ==================== 客人 ==================== */
+
+.customer-card{
+    background:#fff;
+    border-radius:17px;
+    margin-bottom:13px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+
+.customer-head{
+    padding:14px 15px;
+    border-bottom:1px solid #eee;
+}
+
+.customer-name{
+    font-size:17px;
+    font-weight:600;
+}
+
+.customer-summary{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:7px;
+    font-size:11px;
+    color:#888;
+}
+
+.customer-summary strong{
+    color:#444;
+}
+
+/* ==================== 品項 ==================== */
+
+.item{
+    padding:14px 15px;
+    border-bottom:1px solid #f0f0f0;
+}
+
+.item:last-child{
+    border-bottom:none;
+}
+
+.item-main{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.item-name{
+    font-size:15px;
+    font-weight:600;
+    word-break:break-word;
+}
+
+.item-price{
+    text-align:right;
+    flex-shrink:0;
+}
+
+.krw{
+    font-size:14px;
+    font-weight:600;
+}
+
+.twd{
+    font-size:11px;
+    color:#999;
+    margin-top:2px;
+}
+
+.item-status{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:11px;
+}
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+}
+
+.badge{
+    border-radius:20px;
+    padding:5px 8px;
+    font-size:11px;
+    background:#f2f2f2;
+    color:#777;
+}
+
+.badge.active{
+    background:#333;
+    color:#fff;
+}
+
+.badge.out{
+    background:#eee;
+    color:#777;
+}
+
+.actions{
+    display:flex;
+    gap:5px;
+}
+
+.small-btn{
+    border:1px solid #ddd;
+    background:#fff;
+    color:#777;
+    border-radius:7px;
+    padding:5px 8px;
+    font-size:11px;
+}
+
+.delete-btn{
+    color:#999;
+}
+
+/* ==================== 空白 ==================== */
+
+.empty{
+    text-align:center;
+    padding:45px 10px;
+    color:#aaa;
+    font-size:13px;
+    background:#fff;
+    border-radius:15px;
+}
+
+/* ==================== 編輯視窗 ==================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    z-index:100;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:760px;
+    background:#fff;
+    border-radius:20px 20px 0 0;
+    padding:20px 16px 25px;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.modal-title{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:14px;
+}
+
+.modal-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:10px;
+}
+
+.cancel-btn{
+    background:#eee;
+    color:#555;
+}
+
+.update-btn{
+    background:#333;
+    color:#fff;
+}
+
+/* ==================== 手機 ==================== */
+
+@media(max-width:520px){
+
+    .stats{
+        grid-template-columns:repeat(4,1fr);
     }
 
-    .stats {
-        gap: 6px;
+    .stat-number{
+        font-size:17px;
     }
+
+    .stat-label{
+        font-size:10px;
+    }
+
+    .item-main{
+        gap:8px;
+    }
+
 }
 </style>
 </head>
@@ -233,41 +481,48 @@ button {
 
 <div class="container">
 
+    <!-- 標題 -->
     <div class="header">
-        <h1>🇰🇷 韓國代購清單</h1>
-        <p>簡單記錄每個人的代購品項</p>
+        <h1>🇰🇷 韓國代購</h1>
+        <p>代購訂單管理清單</p>
     </div>
+
 
     <!-- 匯率 -->
     <div class="rate-box">
-        <div class="rate-title">韓元 → 台幣匯率</div>
+
+        <div class="rate-title">
+            韓元 → 台幣
+        </div>
 
         <div class="rate-row">
             <span>₩1,000 ≈</span>
 
             <input
-                type="number"
                 id="rate"
+                type="number"
                 value="23"
                 step="0.1"
                 onchange="saveRate()"
             >
 
-            <span>元台幣</span>
+            <span>NT$</span>
         </div>
+
     </div>
+
 
     <!-- 統計 -->
     <div class="stats">
 
         <div class="stat">
-            <div class="stat-number" id="buyCount">0</div>
-            <div class="stat-label">已購買</div>
+            <div class="stat-number" id="allCount">0</div>
+            <div class="stat-label">全部</div>
         </div>
 
         <div class="stat">
-            <div class="stat-number" id="waitingCount">0</div>
-            <div class="stat-label">未購買</div>
+            <div class="stat-number" id="boughtCount">0</div>
+            <div class="stat-label">已購買</div>
         </div>
 
         <div class="stat">
@@ -275,51 +530,183 @@ button {
             <div class="stat-label">沒貨</div>
         </div>
 
+        <div class="stat">
+            <div class="stat-number" id="unpaidCount">0</div>
+            <div class="stat-label">未付</div>
+        </div>
+
     </div>
+
+
+    <!-- 篩選 -->
+    <div class="filter-box">
+
+        <button
+            class="filter-btn active"
+            onclick="setFilter('all',this)"
+        >
+            全部訂單
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('waiting',this)"
+        >
+            ⏳ 未購買
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('bought',this)"
+        >
+            ✓ 已購買
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('out',this)"
+        >
+            × 沒貨
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('paid',this)"
+        >
+            ✓ 已付
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('unpaid',this)"
+        >
+            ○ 未付
+        </button>
+
+    </div>
+
 
     <!-- 新增 -->
     <div class="add-box">
 
-        <h2>＋ 新增代購</h2>
+        <div class="add-title">
+            ＋ 新增代購品項
+        </div>
 
         <div class="form">
 
             <input
-                type="text"
                 id="customer"
+                type="text"
                 placeholder="客人名字"
             >
 
             <input
-                type="text"
                 id="product"
+                type="text"
                 placeholder="品項名稱"
             >
 
-            <input
-                type="number"
-                id="price"
-                placeholder="韓元價格，例如 35000"
+            <div class="price-row">
+
+                <input
+                    id="price"
+                    type="number"
+                    placeholder="韓元價格"
+                    oninput="updatePreview()"
+                >
+
+                <div
+                    class="preview"
+                    id="preview"
+                >
+                    約 NT$0
+                </div>
+
+            </div>
+
+
+            <div class="field-title">
+                購買狀態
+            </div>
+
+            <div class="check-row">
+
+                <div class="check">
+
+                    <input
+                        id="newBought"
+                        type="checkbox"
+                    >
+
+                    <label for="newBought">
+                        <span class="check-box">✓</span>
+                        已購買
+                    </label>
+
+                </div>
+
+                <div class="check">
+
+                    <input
+                        id="newOut"
+                        type="checkbox"
+                    >
+
+                    <label for="newOut">
+                        <span class="check-box">✓</span>
+                        沒貨
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="field-title">
+                收款狀態
+            </div>
+
+            <div class="check-row">
+
+                <div class="check">
+
+                    <input
+                        id="newPaid"
+                        type="checkbox"
+                    >
+
+                    <label for="newPaid">
+                        <span class="check-box">✓</span>
+                        已付
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="save-btn"
+                onclick="addItem()"
             >
-
-            <select id="status">
-                <option value="waiting">⏳ 未購買</option>
-                <option value="bought">✅ 已購買</option>
-                <option value="out">❌ 沒貨</option>
-            </select>
-
-            <button class="add-btn" onclick="addItem()">
-                新增到清單
+                儲存代購
             </button>
 
         </div>
 
     </div>
 
+
     <!-- 清單 -->
-    <div class="list-title">
-        <h2>代購清單</h2>
-        <span id="totalCount">0 筆</span>
+    <div class="list-header">
+
+        <h2>訂單清單</h2>
+
+        <span id="totalText">
+            0 筆
+        </span>
+
     </div>
 
     <div id="list"></div>
@@ -327,37 +714,176 @@ button {
 </div>
 
 
+<!-- 編輯視窗 -->
+
+<div
+    class="modal"
+    id="modal"
+    onclick="closeModalOutside(event)"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            編輯代購
+        </div>
+
+        <div class="form">
+
+            <input
+                id="editCustomer"
+                type="text"
+                placeholder="客人名字"
+            >
+
+            <input
+                id="editProduct"
+                type="text"
+                placeholder="品項名稱"
+            >
+
+            <input
+                id="editPrice"
+                type="number"
+                placeholder="韓元價格"
+            >
+
+
+            <div class="field-title">
+                購買狀態
+            </div>
+
+            <div class="check-row">
+
+                <div class="check">
+
+                    <input
+                        id="editBought"
+                        type="checkbox"
+                    >
+
+                    <label for="editBought">
+                        <span class="check-box">✓</span>
+                        已購買
+                    </label>
+
+                </div>
+
+                <div class="check">
+
+                    <input
+                        id="editOut"
+                        type="checkbox"
+                    >
+
+                    <label for="editOut">
+                        <span class="check-box">✓</span>
+                        沒貨
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="field-title">
+                收款狀態
+            </div>
+
+            <div class="check-row">
+
+                <div class="check">
+
+                    <input
+                        id="editPaid"
+                        type="checkbox"
+                    >
+
+                    <label for="editPaid">
+                        <span class="check-box">✓</span>
+                        已付
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeModal()"
+                >
+                    取消
+                </button>
+
+                <button
+                    class="update-btn"
+                    onclick="updateItem()"
+                >
+                    儲存修改
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
 
-let items = JSON.parse(localStorage.getItem("buyingList")) || [];
+/* =========================
+   資料
+========================= */
 
-let rate = localStorage.getItem("buyingRate") || 23;
+let items =
+    JSON.parse(
+        localStorage.getItem("koreaBuyingList")
+    ) || [];
+
+let rate =
+    Number(
+        localStorage.getItem("koreaBuyingRate")
+    ) || 23;
+
+let currentFilter = "all";
+
+let editingId = null;
 
 document.getElementById("rate").value = rate;
 
 
-/* 儲存 */
+/* =========================
+   儲存資料
+========================= */
 
-function saveData() {
+function saveData(){
 
     localStorage.setItem(
-        "buyingList",
+        "koreaBuyingList",
         JSON.stringify(items)
     );
 
 }
 
 
-/* 匯率 */
+/* =========================
+   匯率
+========================= */
 
-function saveRate() {
+function saveRate(){
 
-    rate = Number(
-        document.getElementById("rate").value
-    ) || 23;
+    rate =
+        Number(
+            document.getElementById("rate").value
+        ) || 23;
 
     localStorage.setItem(
-        "buyingRate",
+        "koreaBuyingRate",
         rate
     );
 
@@ -366,48 +892,89 @@ function saveRate() {
 }
 
 
-/* 新增 */
+/* =========================
+   韓元 → 台幣
+========================= */
 
-function addItem() {
+function toTWD(price){
 
-    const customer =
-        document.getElementById("customer").value.trim();
+    return Math.round(
+        Number(price || 0) / 1000 * rate
+    );
 
-    const product =
-        document.getElementById("product").value.trim();
+}
+
+
+/* =========================
+   新增預覽
+========================= */
+
+function updatePreview(){
 
     const price =
-        Number(document.getElementById("price").value);
+        Number(
+            document.getElementById("price").value
+        ) || 0;
 
-    const status =
-        document.getElementById("status").value;
+    document.getElementById("preview").innerText =
+        "約 NT$" + toTWD(price).toLocaleString();
+
+}
 
 
-    if (!customer || !product || !price) {
+/* =========================
+   新增
+========================= */
 
-        alert("請把名字、品項、韓元價格填完整");
+function addItem(){
 
-        return;
+    const customer =
+        document.getElementById("customer").value;
 
-    }
+    const product =
+        document.getElementById("product").value;
 
+    const price =
+        Number(
+            document.getElementById("price").value
+        ) || 0;
+
+    const bought =
+        document.getElementById("newBought").checked;
+
+    const out =
+        document.getElementById("newOut").checked;
+
+    const paid =
+        document.getElementById("newPaid").checked;
+
+
+    /*
+       空白也可以儲存
+       不做任何必填限制
+    */
 
     items.push({
 
-        id: Date.now(),
+        id:Date.now(),
 
-        customer: customer,
+        customer:customer,
 
-        product: product,
+        product:product,
 
-        price: price,
+        price:price,
 
-        status: status
+        bought:bought,
+
+        out:out,
+
+        paid:paid
 
     });
 
 
     saveData();
+
 
     document.getElementById("customer").value = "";
 
@@ -415,23 +982,222 @@ function addItem() {
 
     document.getElementById("price").value = "";
 
-    document.getElementById("status").value = "waiting";
+    document.getElementById("newBought").checked = false;
+
+    document.getElementById("newOut").checked = false;
+
+    document.getElementById("newPaid").checked = false;
+
+    updatePreview();
 
     render();
 
 }
 
 
-/* 修改狀態 */
+/* =========================
+   篩選
+========================= */
 
-function changeStatus(id, status) {
+function setFilter(filter,button){
+
+    currentFilter = filter;
+
+    document
+        .querySelectorAll(".filter-btn")
+        .forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    render();
+
+}
+
+
+/* =========================
+   判斷是否符合篩選
+========================= */
+
+function matchFilter(item){
+
+    if(currentFilter === "all"){
+        return true;
+    }
+
+    if(currentFilter === "waiting"){
+        return !item.bought && !item.out;
+    }
+
+    if(currentFilter === "bought"){
+        return item.bought;
+    }
+
+    if(currentFilter === "out"){
+        return item.out;
+    }
+
+    if(currentFilter === "paid"){
+        return item.paid;
+    }
+
+    if(currentFilter === "unpaid"){
+        return !item.paid;
+    }
+
+    return true;
+
+}
+
+
+/* =========================
+   編輯
+========================= */
+
+function editItem(id){
 
     const item =
-        items.find(item => item.id === id);
+        items.find(x => x.id === id);
 
-    if (item) {
+    if(!item){
+        return;
+    }
 
-        item.status = status;
+    editingId = id;
+
+    document.getElementById("editCustomer").value =
+        item.customer || "";
+
+    document.getElementById("editProduct").value =
+        item.product || "";
+
+    document.getElementById("editPrice").value =
+        item.price || "";
+
+    document.getElementById("editBought").checked =
+        !!item.bought;
+
+    document.getElementById("editOut").checked =
+        !!item.out;
+
+    document.getElementById("editPaid").checked =
+        !!item.paid;
+
+    document.getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   儲存修改
+========================= */
+
+function updateItem(){
+
+    const item =
+        items.find(x => x.id === editingId);
+
+    if(!item){
+        return;
+    }
+
+
+    item.customer =
+        document.getElementById("editCustomer").value;
+
+    item.product =
+        document.getElementById("editProduct").value;
+
+    item.price =
+        Number(
+            document.getElementById("editPrice").value
+        ) || 0;
+
+    item.bought =
+        document.getElementById("editBought").checked;
+
+    item.out =
+        document.getElementById("editOut").checked;
+
+    item.paid =
+        document.getElementById("editPaid").checked;
+
+
+    saveData();
+
+    closeModal();
+
+    render();
+
+}
+
+
+/* =========================
+   關閉編輯
+========================= */
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+    editingId = null;
+
+}
+
+
+function closeModalOutside(event){
+
+    if(
+        event.target ===
+        document.getElementById("modal")
+    ){
+        closeModal();
+    }
+
+}
+
+
+/* =========================
+   刪除
+========================= */
+
+function deleteItem(id){
+
+    if(
+        !confirm("確定要刪除這筆代購嗎？")
+    ){
+        return;
+    }
+
+    items =
+        items.filter(
+            item => item.id !== id
+        );
+
+    saveData();
+
+    render();
+
+}
+
+
+/* =========================
+   狀態切換
+========================= */
+
+function toggleBought(id){
+
+    const item =
+        items.find(x => x.id === id);
+
+    if(item){
+
+        item.bought =
+            !item.bought;
 
         saveData();
 
@@ -442,38 +1208,112 @@ function changeStatus(id, status) {
 }
 
 
-/* 刪除 */
+function toggleOut(id){
 
-function deleteItem(id) {
+    const item =
+        items.find(x => x.id === id);
 
-    if (!confirm("確定要刪除這筆代購嗎？")) {
-        return;
+    if(item){
+
+        item.out =
+            !item.out;
+
+        saveData();
+
+        render();
+
     }
 
-    items =
-        items.filter(item => item.id !== id);
+}
 
-    saveData();
 
-    render();
+function togglePaid(id){
+
+    const item =
+        items.find(x => x.id === id);
+
+    if(item){
+
+        item.paid =
+            !item.paid;
+
+        saveData();
+
+        render();
+
+    }
 
 }
 
 
-/* 台幣 */
+/* =========================
+   顯示狀態
+========================= */
 
-function twd(price) {
+function statusText(item){
 
-    return Math.round(
-        price / 1000 * Number(rate)
-    );
+    let html = "";
+
+
+    if(item.bought){
+
+        html += `
+            <span class="badge active">
+                ✓ 已購買
+            </span>
+        `;
+
+    }else{
+
+        html += `
+            <span class="badge">
+                ⏳ 未購買
+            </span>
+        `;
+
+    }
+
+
+    if(item.out){
+
+        html += `
+            <span class="badge out">
+                × 沒貨
+            </span>
+        `;
+
+    }
+
+
+    if(item.paid){
+
+        html += `
+            <span class="badge active">
+                ✓ 已付
+            </span>
+        `;
+
+    }else{
+
+        html += `
+            <span class="badge">
+                ○ 未付
+            </span>
+        `;
+
+    }
+
+
+    return html;
 
 }
 
 
-/* 顯示 */
+/* =========================
+   渲染
+========================= */
 
-function render() {
+function render(){
 
     const list =
         document.getElementById("list");
@@ -481,136 +1321,299 @@ function render() {
     list.innerHTML = "";
 
 
-    document.getElementById("totalCount").innerText =
-        items.length + " 筆";
+    /* 統計 */
+
+    const all = items.length;
+
+    const bought =
+        items.filter(x => x.bought).length;
+
+    const out =
+        items.filter(x => x.out).length;
+
+    const unpaid =
+        items.filter(x => !x.paid).length;
 
 
-    let bought = 0;
+    document.getElementById("allCount").innerText =
+        all;
 
-    let waiting = 0;
-
-    let out = 0;
-
-
-    items.forEach(item => {
-
-        if (item.status === "bought") bought++;
-
-        if (item.status === "waiting") waiting++;
-
-        if (item.status === "out") out++;
-
-
-        const div =
-            document.createElement("div");
-
-        div.className = "item";
-
-
-        div.innerHTML = `
-
-            <div class="item-top">
-
-                <div>
-
-                    <div class="customer">
-                        👤 ${item.customer}
-                    </div>
-
-                    <div class="product">
-                        ${item.product}
-                    </div>
-
-                </div>
-
-
-                <div class="price">
-
-                    <div class="krw">
-                        ₩${item.price.toLocaleString()}
-                    </div>
-
-                    <div class="twd">
-                        約 NT$${twd(item.price).toLocaleString()}
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="status-row">
-
-                <select
-                    class="status-select"
-                    onchange="changeStatus(${item.id}, this.value)"
-                >
-
-                    <option
-                        value="waiting"
-                        ${item.status === "waiting" ? "selected" : ""}
-                    >
-                        ⏳ 未購買
-                    </option>
-
-                    <option
-                        value="bought"
-                        ${item.status === "bought" ? "selected" : ""}
-                    >
-                        ✅ 已購買
-                    </option>
-
-                    <option
-                        value="out"
-                        ${item.status === "out" ? "selected" : ""}
-                    >
-                        ❌ 沒貨
-                    </option>
-
-                </select>
-
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteItem(${item.id})"
-                >
-                    刪除
-                </button>
-
-            </div>
-
-        `;
-
-
-        list.appendChild(div);
-
-    });
-
-
-    document.getElementById("buyCount").innerText =
+    document.getElementById("boughtCount").innerText =
         bought;
-
-    document.getElementById("waitingCount").innerText =
-        waiting;
 
     document.getElementById("outCount").innerText =
         out;
 
+    document.getElementById("unpaidCount").innerText =
+        unpaid;
 
-    if (items.length === 0) {
+
+    /* 篩選 */
+
+    const filtered =
+        items.filter(matchFilter);
+
+
+    document.getElementById("totalText").innerText =
+        filtered.length + " 筆";
+
+
+    if(filtered.length === 0){
 
         list.innerHTML = `
             <div class="empty">
-                目前還沒有代購項目 ♡
+                目前沒有符合條件的訂單 ♡
             </div>
         `;
 
+        return;
+
     }
+
+
+    /* =========================
+       依客人分組
+    ========================= */
+
+    const groups = {};
+
+    filtered.forEach(item => {
+
+        const name =
+            item.customer || "未填寫姓名";
+
+        if(!groups[name]){
+            groups[name] = [];
+        }
+
+        groups[name].push(item);
+
+    });
+
+
+    Object.keys(groups).forEach(customer => {
+
+        const customerItems =
+            groups[customer];
+
+
+        let totalPrice = 0;
+
+        let boughtPrice = 0;
+
+        let outPrice = 0;
+
+        let unpaidPrice = 0;
+
+
+        customerItems.forEach(item => {
+
+            totalPrice += Number(item.price || 0);
+
+            if(item.bought){
+                boughtPrice += Number(item.price || 0);
+            }
+
+            if(item.out){
+                outPrice += Number(item.price || 0);
+            }
+
+            if(!item.paid){
+                unpaidPrice += Number(item.price || 0);
+            }
+
+        });
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "customer-card";
+
+
+        /* 客人標題 */
+
+        card.innerHTML = `
+
+            <div class="customer-head">
+
+                <div class="customer-name">
+                    👤 ${escapeHTML(customer)}
+                </div>
+
+                <div class="customer-summary">
+
+                    <span>
+                        共 <strong>
+                            ₩${totalPrice.toLocaleString()}
+                        </strong>
+                    </span>
+
+                    <span>
+                        約 <strong>
+                            NT$${toTWD(totalPrice).toLocaleString()}
+                        </strong>
+                    </span>
+
+                    <span>
+                        已購
+                        <strong>
+                            ₩${boughtPrice.toLocaleString()}
+                        </strong>
+                    </span>
+
+                    <span>
+                        沒貨
+                        <strong>
+                            ₩${outPrice.toLocaleString()}
+                        </strong>
+                    </span>
+
+                    <span>
+                        未付
+                        <strong>
+                            ₩${unpaidPrice.toLocaleString()}
+                        </strong>
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        /* 每個品項 */
+
+        customerItems.forEach(item => {
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "item";
+
+
+            div.innerHTML = `
+
+                <div class="item-main">
+
+                    <div>
+
+                        <div class="item-name">
+                            ${escapeHTML(
+                                item.product ||
+                                "未填寫品項"
+                            )}
+                        </div>
+
+                    </div>
+
+
+                    <div class="item-price">
+
+                        <div class="krw">
+                            ₩${Number(
+                                item.price || 0
+                            ).toLocaleString()}
+                        </div>
+
+                        <div class="twd">
+                            約 NT$${toTWD(
+                                item.price
+                            ).toLocaleString()}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="item-status">
+
+                    <div class="badges">
+
+                        ${statusText(item)}
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="small-btn"
+                            onclick="toggleBought(${item.id})"
+                        >
+                            ✓
+                        </button>
+
+                        <button
+                            class="small-btn"
+                            onclick="toggleOut(${item.id})"
+                        >
+                            ×
+                        </button>
+
+                        <button
+                            class="small-btn"
+                            onclick="togglePaid(${item.id})"
+                        >
+                            ₩
+                        </button>
+
+                        <button
+                            class="small-btn"
+                            onclick="editItem(${item.id})"
+                        >
+                            編輯
+                        </button>
+
+                        <button
+                            class="small-btn delete-btn"
+                            onclick="deleteItem(${item.id})"
+                        >
+                            刪除
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            card.appendChild(div);
+
+        });
+
+
+        list.appendChild(card);
+
+    });
 
 }
 
 
-/* 初始 */
+/* =========================
+   防止 HTML 文字造成問題
+========================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   初始
+========================= */
 
 render();
 
