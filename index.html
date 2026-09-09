@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>韓國代購管理</title>
 
 <style>
@@ -20,8 +19,7 @@ body{
     "Microsoft JhengHei",sans-serif;
 }
 
-button,
-input{
+button,input{
     font-family:inherit;
 }
 
@@ -31,7 +29,7 @@ input{
     padding:18px 14px 50px;
 }
 
-/* ==================== 標題 ==================== */
+/* ===== 標題 ===== */
 
 .header{
     text-align:center;
@@ -50,7 +48,7 @@ input{
     font-size:13px;
 }
 
-/* ==================== 匯率 ==================== */
+/* ===== 匯率 ===== */
 
 .rate-box{
     background:#fff;
@@ -81,7 +79,7 @@ input{
     font-size:14px;
 }
 
-/* ==================== 統計 ==================== */
+/* ===== 統計 ===== */
 
 .stats{
     display:grid;
@@ -108,7 +106,7 @@ input{
     margin-top:3px;
 }
 
-/* ==================== 篩選 ==================== */
+/* ===== 篩選 ===== */
 
 .filter-box{
     display:flex;
@@ -134,7 +132,7 @@ input{
     border-color:#333;
 }
 
-/* ==================== 新增 ==================== */
+/* ===== 新增訂單 ===== */
 
 .add-box{
     background:#fff;
@@ -150,54 +148,67 @@ input{
     margin-bottom:13px;
 }
 
-.form{
-    display:grid;
-    gap:9px;
-}
-
-.form input{
+.customer-input{
     width:100%;
     border:1px solid #ddd;
     border-radius:9px;
     padding:11px 12px;
     font-size:14px;
     outline:none;
+    margin-bottom:12px;
 }
 
-.form input:focus{
-    border-color:#aaa;
+.items-title{
+    font-size:12px;
+    color:#888;
+    margin-bottom:7px;
 }
 
-.price-row{
+/* ===== 新增品項 ===== */
+
+.new-item{
+    background:#f7f7f5;
+    border-radius:12px;
+    padding:11px;
+    margin-bottom:8px;
+}
+
+.new-item-row{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+    grid-template-columns:1fr 110px 30px;
+    gap:7px;
+    align-items:center;
 }
 
-.preview{
-    background:#f6f6f4;
-    border-radius:9px;
-    padding:10px 12px;
-    color:#777;
+.new-item input{
+    width:100%;
+    border:1px solid #ddd;
+    background:#fff;
+    border-radius:8px;
+    padding:9px;
     font-size:13px;
 }
 
-.save-btn{
-    width:100%;
-    background:#333;
-    color:#fff;
-    padding:12px;
-    border-radius:10px;
-    border:none;
-    font-size:14px;
-    margin-top:2px;
+.remove-item{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    border:0;
+    background:#e9e9e7;
+    color:#777;
+    font-size:16px;
 }
 
-/* ==================== 打勾選單 ==================== */
-
-.check-row{
+.new-item-bottom{
     display:flex;
-    gap:8px;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:8px;
+}
+
+.new-checks{
+    display:flex;
+    gap:6px;
     flex-wrap:wrap;
 }
 
@@ -208,31 +219,31 @@ input{
 .check input{
     position:absolute;
     opacity:0;
-    pointer-events:none;
 }
 
 .check label{
     display:flex;
     align-items:center;
-    gap:6px;
+    gap:5px;
     border:1px solid #ddd;
-    border-radius:9px;
-    padding:9px 12px;
-    font-size:13px;
+    border-radius:8px;
+    padding:6px 8px;
+    font-size:11px;
     color:#777;
+    background:#fff;
     cursor:pointer;
     user-select:none;
 }
 
 .check-box{
-    width:17px;
-    height:17px;
+    width:15px;
+    height:15px;
     border:1px solid #bbb;
     border-radius:4px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:12px;
+    font-size:10px;
 }
 
 .check input:checked + label{
@@ -242,18 +253,67 @@ input{
 }
 
 .check input:checked + label .check-box{
-    border-color:#fff;
     background:#fff;
     color:#333;
+    border-color:#fff;
 }
 
-.field-title{
+.item-preview{
+    font-size:11px;
+    color:#999;
+    white-space:nowrap;
+}
+
+.add-item-btn{
+    width:100%;
+    background:#f0f0ee;
+    border:1px dashed #ccc;
+    color:#666;
+    padding:9px;
+    border-radius:9px;
+    font-size:13px;
+    margin-top:3px;
+}
+
+.order-total{
+    background:#f2f2f0;
+    border-radius:11px;
+    padding:12px;
+    margin-top:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.total-label{
+    font-size:13px;
+    color:#777;
+}
+
+.total-krw{
+    font-size:17px;
+    font-weight:700;
+}
+
+.total-twd{
     font-size:12px;
     color:#888;
-    margin:3px 0 6px;
+    margin-top:2px;
+    text-align:right;
 }
 
-/* ==================== 清單 ==================== */
+.save-btn{
+    width:100%;
+    background:#333;
+    color:#fff;
+    padding:12px;
+    border-radius:10px;
+    border:0;
+    font-size:14px;
+    margin-top:10px;
+}
+
+/* ===== 訂單 ===== */
 
 .list-header{
     display:flex;
@@ -271,8 +331,6 @@ input{
     color:#999;
     font-size:12px;
 }
-
-/* ==================== 客人 ==================== */
 
 .customer-card{
     background:#fff;
@@ -293,22 +351,33 @@ input{
 }
 
 .customer-summary{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:7px;
-    font-size:11px;
-    color:#888;
+    margin-top:9px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
 }
 
-.customer-summary strong{
-    color:#444;
+.summary-box{
+    background:#f6f6f4;
+    border-radius:8px;
+    padding:7px 8px;
 }
 
-/* ==================== 品項 ==================== */
+.summary-label{
+    font-size:10px;
+    color:#999;
+}
+
+.summary-value{
+    font-size:12px;
+    font-weight:600;
+    margin-top:2px;
+}
+
+/* ===== 品項 ===== */
 
 .item{
-    padding:14px 15px;
+    padding:13px 15px;
     border-bottom:1px solid #f0f0f0;
 }
 
@@ -348,20 +417,20 @@ input{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:11px;
+    margin-top:10px;
 }
 
 .badges{
     display:flex;
-    flex-wrap:wrap;
     gap:5px;
+    flex-wrap:wrap;
 }
 
 .badge{
     border-radius:20px;
     padding:5px 8px;
-    font-size:11px;
-    background:#f2f2f2;
+    font-size:10px;
+    background:#f0f0ee;
     color:#777;
 }
 
@@ -371,13 +440,13 @@ input{
 }
 
 .badge.out{
-    background:#eee;
-    color:#777;
+    background:#ddd;
+    color:#666;
 }
 
 .actions{
     display:flex;
-    gap:5px;
+    gap:4px;
 }
 
 .small-btn{
@@ -385,15 +454,9 @@ input{
     background:#fff;
     color:#777;
     border-radius:7px;
-    padding:5px 8px;
-    font-size:11px;
+    padding:5px 7px;
+    font-size:10px;
 }
-
-.delete-btn{
-    color:#999;
-}
-
-/* ==================== 空白 ==================== */
 
 .empty{
     text-align:center;
@@ -404,61 +467,16 @@ input{
     border-radius:15px;
 }
 
-/* ==================== 編輯視窗 ==================== */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    display:none;
-    align-items:flex-end;
-    justify-content:center;
-    z-index:100;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:760px;
-    background:#fff;
-    border-radius:20px 20px 0 0;
-    padding:20px 16px 25px;
-    max-height:90vh;
-    overflow-y:auto;
-}
-
-.modal-title{
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:14px;
-}
-
-.modal-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-top:10px;
-}
-
-.cancel-btn{
-    background:#eee;
-    color:#555;
-}
-
-.update-btn{
-    background:#333;
-    color:#fff;
-}
-
-/* ==================== 手機 ==================== */
+/* ===== 手機 ===== */
 
 @media(max-width:520px){
 
+    .new-item-row{
+        grid-template-columns:1fr 95px 30px;
+    }
+
     .stats{
-        grid-template-columns:repeat(4,1fr);
+        gap:5px;
     }
 
     .stat-number{
@@ -469,10 +487,6 @@ input{
         font-size:10px;
     }
 
-    .item-main{
-        gap:8px;
-    }
-
 }
 </style>
 </head>
@@ -481,18 +495,16 @@ input{
 
 <div class="container">
 
-    <!-- 標題 -->
     <div class="header">
         <h1>🇰🇷 韓國代購</h1>
-        <p>代購訂單管理清單</p>
+        <p>代購訂單管理</p>
     </div>
-
 
     <!-- 匯率 -->
     <div class="rate-box">
 
         <div class="rate-title">
-            韓元 → 台幣
+            韓元 → 台幣匯率
         </div>
 
         <div class="rate-row">
@@ -511,13 +523,12 @@ input{
 
     </div>
 
-
     <!-- 統計 -->
     <div class="stats">
 
         <div class="stat">
             <div class="stat-number" id="allCount">0</div>
-            <div class="stat-label">全部</div>
+            <div class="stat-label">全部品項</div>
         </div>
 
         <div class="stat">
@@ -537,168 +548,100 @@ input{
 
     </div>
 
-
     <!-- 篩選 -->
     <div class="filter-box">
 
-        <button
-            class="filter-btn active"
-            onclick="setFilter('all',this)"
-        >
+        <button class="filter-btn active"
+                onclick="setFilter('all',this)">
             全部訂單
         </button>
 
-        <button
-            class="filter-btn"
-            onclick="setFilter('waiting',this)"
-        >
+        <button class="filter-btn"
+                onclick="setFilter('waiting',this)">
             ⏳ 未購買
         </button>
 
-        <button
-            class="filter-btn"
-            onclick="setFilter('bought',this)"
-        >
+        <button class="filter-btn"
+                onclick="setFilter('bought',this)">
             ✓ 已購買
         </button>
 
-        <button
-            class="filter-btn"
-            onclick="setFilter('out',this)"
-        >
+        <button class="filter-btn"
+                onclick="setFilter('out',this)">
             × 沒貨
         </button>
 
-        <button
-            class="filter-btn"
-            onclick="setFilter('paid',this)"
-        >
+        <button class="filter-btn"
+                onclick="setFilter('paid',this)">
             ✓ 已付
         </button>
 
-        <button
-            class="filter-btn"
-            onclick="setFilter('unpaid',this)"
-        >
+        <button class="filter-btn"
+                onclick="setFilter('unpaid',this)">
             ○ 未付
         </button>
 
     </div>
 
-
-    <!-- 新增 -->
+    <!-- 新增一個客人的完整訂單 -->
     <div class="add-box">
 
         <div class="add-title">
-            ＋ 新增代購品項
+            ＋ 新增客人訂單
         </div>
 
-        <div class="form">
+        <input
+            id="newCustomer"
+            class="customer-input"
+            type="text"
+            placeholder="客人名字"
+        >
 
-            <input
-                id="customer"
-                type="text"
-                placeholder="客人名字"
-            >
+        <div class="items-title">
+            代購品項
+        </div>
 
-            <input
-                id="product"
-                type="text"
-                placeholder="品項名稱"
-            >
+        <div id="newItems"></div>
 
-            <div class="price-row">
+        <button
+            class="add-item-btn"
+            onclick="addNewItemRow()"
+        >
+            ＋ 新增品項
+        </button>
 
-                <input
-                    id="price"
-                    type="number"
-                    placeholder="韓元價格"
-                    oninput="updatePreview()"
-                >
+        <div class="order-total">
 
-                <div
-                    class="preview"
-                    id="preview"
-                >
+            <div>
+                <div class="total-label">
+                    訂單總計
+                </div>
+
+                <div class="total-krw"
+                     id="newTotalKRW">
+                    ₩0
+                </div>
+            </div>
+
+            <div>
+                <div class="total-twd"
+                     id="newTotalTWD">
                     約 NT$0
                 </div>
-
             </div>
-
-
-            <div class="field-title">
-                購買狀態
-            </div>
-
-            <div class="check-row">
-
-                <div class="check">
-
-                    <input
-                        id="newBought"
-                        type="checkbox"
-                    >
-
-                    <label for="newBought">
-                        <span class="check-box">✓</span>
-                        已購買
-                    </label>
-
-                </div>
-
-                <div class="check">
-
-                    <input
-                        id="newOut"
-                        type="checkbox"
-                    >
-
-                    <label for="newOut">
-                        <span class="check-box">✓</span>
-                        沒貨
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div class="field-title">
-                收款狀態
-            </div>
-
-            <div class="check-row">
-
-                <div class="check">
-
-                    <input
-                        id="newPaid"
-                        type="checkbox"
-                    >
-
-                    <label for="newPaid">
-                        <span class="check-box">✓</span>
-                        已付
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="save-btn"
-                onclick="addItem()"
-            >
-                儲存代購
-            </button>
 
         </div>
+
+        <button
+            class="save-btn"
+            onclick="saveOrder()"
+        >
+            儲存整張訂單
+        </button>
 
     </div>
 
-
-    <!-- 清單 -->
+    <!-- 訂單清單 -->
     <div class="list-header">
 
         <h2>訂單清單</h2>
@@ -714,158 +657,43 @@ input{
 </div>
 
 
-<!-- 編輯視窗 -->
-
-<div
-    class="modal"
-    id="modal"
-    onclick="closeModalOutside(event)"
->
-
-    <div class="modal-box">
-
-        <div class="modal-title">
-            編輯代購
-        </div>
-
-        <div class="form">
-
-            <input
-                id="editCustomer"
-                type="text"
-                placeholder="客人名字"
-            >
-
-            <input
-                id="editProduct"
-                type="text"
-                placeholder="品項名稱"
-            >
-
-            <input
-                id="editPrice"
-                type="number"
-                placeholder="韓元價格"
-            >
-
-
-            <div class="field-title">
-                購買狀態
-            </div>
-
-            <div class="check-row">
-
-                <div class="check">
-
-                    <input
-                        id="editBought"
-                        type="checkbox"
-                    >
-
-                    <label for="editBought">
-                        <span class="check-box">✓</span>
-                        已購買
-                    </label>
-
-                </div>
-
-                <div class="check">
-
-                    <input
-                        id="editOut"
-                        type="checkbox"
-                    >
-
-                    <label for="editOut">
-                        <span class="check-box">✓</span>
-                        沒貨
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div class="field-title">
-                收款狀態
-            </div>
-
-            <div class="check-row">
-
-                <div class="check">
-
-                    <input
-                        id="editPaid"
-                        type="checkbox"
-                    >
-
-                    <label for="editPaid">
-                        <span class="check-box">✓</span>
-                        已付
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    class="cancel-btn"
-                    onclick="closeModal()"
-                >
-                    取消
-                </button>
-
-                <button
-                    class="update-btn"
-                    onclick="updateItem()"
-                >
-                    儲存修改
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
 <script>
 
 /* =========================
    資料
 ========================= */
 
-let items =
+let orders =
     JSON.parse(
-        localStorage.getItem("koreaBuyingList")
+        localStorage.getItem("koreaOrders")
     ) || [];
 
 let rate =
     Number(
-        localStorage.getItem("koreaBuyingRate")
+        localStorage.getItem("koreaRate")
     ) || 23;
 
 let currentFilter = "all";
-
-let editingId = null;
 
 document.getElementById("rate").value = rate;
 
 
 /* =========================
-   儲存資料
+   初始新增一個品項
+========================= */
+
+addNewItemRow();
+
+
+/* =========================
+   儲存
 ========================= */
 
 function saveData(){
 
     localStorage.setItem(
-        "koreaBuyingList",
-        JSON.stringify(items)
+        "koreaOrders",
+        JSON.stringify(orders)
     );
 
 }
@@ -883,9 +711,11 @@ function saveRate(){
         ) || 23;
 
     localStorage.setItem(
-        "koreaBuyingRate",
+        "koreaRate",
         rate
     );
+
+    updateNewOrderTotal();
 
     render();
 
@@ -893,7 +723,7 @@ function saveRate(){
 
 
 /* =========================
-   韓元 → 台幣
+   韓元轉台幣
 ========================= */
 
 function toTWD(price){
@@ -906,69 +736,243 @@ function toTWD(price){
 
 
 /* =========================
-   新增預覽
+   新增品項輸入框
 ========================= */
 
-function updatePreview(){
+function addNewItemRow(){
 
-    const price =
-        Number(
-            document.getElementById("price").value
-        ) || 0;
+    const container =
+        document.getElementById("newItems");
 
-    document.getElementById("preview").innerText =
-        "約 NT$" + toTWD(price).toLocaleString();
+    const id =
+        "new_" + Date.now() + "_" +
+        Math.random().toString(36).substr(2,5);
+
+    const div =
+        document.createElement("div");
+
+    div.className = "new-item";
+
+    div.dataset.id = id;
+
+    div.innerHTML = `
+
+        <div class="new-item-row">
+
+            <input
+                class="new-product"
+                type="text"
+                placeholder="品項名稱"
+                oninput="updateNewOrderTotal()"
+            >
+
+            <input
+                class="new-price"
+                type="number"
+                placeholder="韓元"
+                oninput="updateNewOrderTotal()"
+            >
+
+            <button
+                class="remove-item"
+                onclick="removeNewItem(this)"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="new-item-bottom">
+
+            <div class="new-checks">
+
+                <div class="check">
+
+                    <input
+                        class="new-bought"
+                        id="${id}_b"
+                        type="checkbox"
+                    >
+
+                    <label for="${id}_b">
+                        <span class="check-box">✓</span>
+                        已購買
+                    </label>
+
+                </div>
+
+                <div class="check">
+
+                    <input
+                        class="new-out"
+                        id="${id}_o"
+                        type="checkbox"
+                    >
+
+                    <label for="${id}_o">
+                        <span class="check-box">✓</span>
+                        沒貨
+                    </label>
+
+                </div>
+
+                <div class="check">
+
+                    <input
+                        class="new-paid"
+                        id="${id}_p"
+                        type="checkbox"
+                    >
+
+                    <label for="${id}_p">
+                        <span class="check-box">✓</span>
+                        已付
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="item-preview">
+                約 NT$0
+            </div>
+
+        </div>
+    `;
+
+    container.appendChild(div);
 
 }
 
 
 /* =========================
-   新增
+   刪除尚未儲存的品項
 ========================= */
 
-function addItem(){
+function removeNewItem(button){
+
+    const rows =
+        document.querySelectorAll(".new-item");
+
+    if(rows.length <= 1){
+
+        return;
+
+    }
+
+    button
+        .closest(".new-item")
+        .remove();
+
+    updateNewOrderTotal();
+
+}
+
+
+/* =========================
+   計算正在新增的訂單
+========================= */
+
+function updateNewOrderTotal(){
+
+    const rows =
+        document.querySelectorAll(".new-item");
+
+    let total = 0;
+
+    rows.forEach(row => {
+
+        const price =
+            Number(
+                row.querySelector(".new-price").value
+            ) || 0;
+
+        total += price;
+
+        row.querySelector(".item-preview").innerText =
+            "約 NT$" +
+            toTWD(price).toLocaleString();
+
+    });
+
+
+    document.getElementById("newTotalKRW").innerText =
+        "₩" + total.toLocaleString();
+
+    document.getElementById("newTotalTWD").innerText =
+        "約 NT$" +
+        toTWD(total).toLocaleString();
+
+}
+
+
+/* =========================
+   儲存整張訂單
+========================= */
+
+function saveOrder(){
 
     const customer =
-        document.getElementById("customer").value;
+        document.getElementById("newCustomer").value;
 
-    const product =
-        document.getElementById("product").value;
+    const rows =
+        document.querySelectorAll(".new-item");
 
-    const price =
-        Number(
-            document.getElementById("price").value
-        ) || 0;
-
-    const bought =
-        document.getElementById("newBought").checked;
-
-    const out =
-        document.getElementById("newOut").checked;
-
-    const paid =
-        document.getElementById("newPaid").checked;
+    const items = [];
 
 
-    /*
-       空白也可以儲存
-       不做任何必填限制
-    */
+    rows.forEach(row => {
 
-    items.push({
+        const product =
+            row.querySelector(".new-product").value;
+
+        const price =
+            Number(
+                row.querySelector(".new-price").value
+            ) || 0;
+
+        const bought =
+            row.querySelector(".new-bought").checked;
+
+        const out =
+            row.querySelector(".new-out").checked;
+
+        const paid =
+            row.querySelector(".new-paid").checked;
+
+
+        /*
+           空白也允許儲存
+        */
+
+        items.push({
+
+            id:
+                Date.now() +
+                Math.random(),
+
+            product:product,
+
+            price:price,
+
+            bought:bought,
+
+            out:out,
+
+            paid:paid
+
+        });
+
+    });
+
+
+    orders.push({
 
         id:Date.now(),
 
         customer:customer,
 
-        product:product,
-
-        price:price,
-
-        bought:bought,
-
-        out:out,
-
-        paid:paid
+        items:items
 
     });
 
@@ -976,19 +980,15 @@ function addItem(){
     saveData();
 
 
-    document.getElementById("customer").value = "";
+    /* 清空 */
 
-    document.getElementById("product").value = "";
+    document.getElementById("newCustomer").value = "";
 
-    document.getElementById("price").value = "";
+    document.getElementById("newItems").innerHTML = "";
 
-    document.getElementById("newBought").checked = false;
+    addNewItemRow();
 
-    document.getElementById("newOut").checked = false;
-
-    document.getElementById("newPaid").checked = false;
-
-    updatePreview();
+    updateNewOrderTotal();
 
     render();
 
@@ -1017,117 +1017,79 @@ function setFilter(filter,button){
 
 
 /* =========================
-   判斷是否符合篩選
+   訂單是否符合篩選
 ========================= */
 
-function matchFilter(item){
+function orderMatches(order){
 
     if(currentFilter === "all"){
         return true;
     }
 
-    if(currentFilter === "waiting"){
-        return !item.bought && !item.out;
-    }
+    return order.items.some(item => {
 
-    if(currentFilter === "bought"){
-        return item.bought;
-    }
+        if(currentFilter === "waiting"){
+            return !item.bought && !item.out;
+        }
 
-    if(currentFilter === "out"){
-        return item.out;
-    }
+        if(currentFilter === "bought"){
+            return item.bought;
+        }
 
-    if(currentFilter === "paid"){
-        return item.paid;
-    }
+        if(currentFilter === "out"){
+            return item.out;
+        }
 
-    if(currentFilter === "unpaid"){
-        return !item.paid;
-    }
+        if(currentFilter === "paid"){
+            return item.paid;
+        }
 
-    return true;
+        if(currentFilter === "unpaid"){
+            return !item.paid;
+        }
+
+        return true;
+
+    });
 
 }
 
 
 /* =========================
-   編輯
+   切換品項狀態
 ========================= */
 
-function editItem(id){
+function toggleItem(orderId,itemId,type){
 
-    const item =
-        items.find(x => x.id === id);
+    const order =
+        orders.find(o => o.id === orderId);
 
-    if(!item){
+    if(!order){
         return;
     }
 
-    editingId = id;
-
-    document.getElementById("editCustomer").value =
-        item.customer || "";
-
-    document.getElementById("editProduct").value =
-        item.product || "";
-
-    document.getElementById("editPrice").value =
-        item.price || "";
-
-    document.getElementById("editBought").checked =
-        !!item.bought;
-
-    document.getElementById("editOut").checked =
-        !!item.out;
-
-    document.getElementById("editPaid").checked =
-        !!item.paid;
-
-    document.getElementById("modal")
-        .classList.add("show");
-
-}
-
-
-/* =========================
-   儲存修改
-========================= */
-
-function updateItem(){
-
     const item =
-        items.find(x => x.id === editingId);
+        order.items.find(i => i.id === itemId);
 
     if(!item){
         return;
     }
 
 
-    item.customer =
-        document.getElementById("editCustomer").value;
+    if(type === "bought"){
+        item.bought = !item.bought;
+    }
 
-    item.product =
-        document.getElementById("editProduct").value;
+    if(type === "out"){
+        item.out = !item.out;
+    }
 
-    item.price =
-        Number(
-            document.getElementById("editPrice").value
-        ) || 0;
-
-    item.bought =
-        document.getElementById("editBought").checked;
-
-    item.out =
-        document.getElementById("editOut").checked;
-
-    item.paid =
-        document.getElementById("editPaid").checked;
+    if(type === "paid"){
+        item.paid = !item.paid;
+    }
 
 
     saveData();
-
-    closeModal();
 
     render();
 
@@ -1135,47 +1097,20 @@ function updateItem(){
 
 
 /* =========================
-   關閉編輯
+   刪除整張訂單
 ========================= */
 
-function closeModal(){
-
-    document
-        .getElementById("modal")
-        .classList.remove("show");
-
-    editingId = null;
-
-}
-
-
-function closeModalOutside(event){
+function deleteOrder(orderId){
 
     if(
-        event.target ===
-        document.getElementById("modal")
-    ){
-        closeModal();
-    }
-
-}
-
-
-/* =========================
-   刪除
-========================= */
-
-function deleteItem(id){
-
-    if(
-        !confirm("確定要刪除這筆代購嗎？")
+        !confirm("確定要刪除整張訂單嗎？")
     ){
         return;
     }
 
-    items =
-        items.filter(
-            item => item.id !== id
+    orders =
+        orders.filter(
+            order => order.id !== orderId
         );
 
     saveData();
@@ -1186,131 +1121,84 @@ function deleteItem(id){
 
 
 /* =========================
-   狀態切換
+   刪除品項
 ========================= */
 
-function toggleBought(id){
+function deleteItem(orderId,itemId){
 
-    const item =
-        items.find(x => x.id === id);
+    const order =
+        orders.find(o => o.id === orderId);
 
-    if(item){
-
-        item.bought =
-            !item.bought;
-
-        saveData();
-
-        render();
-
+    if(!order){
+        return;
     }
 
-}
-
-
-function toggleOut(id){
-
-    const item =
-        items.find(x => x.id === id);
-
-    if(item){
-
-        item.out =
-            !item.out;
-
-        saveData();
-
-        render();
-
+    if(
+        !confirm("確定要刪除這個品項嗎？")
+    ){
+        return;
     }
 
-}
+    order.items =
+        order.items.filter(
+            item => item.id !== itemId
+        );
 
+    saveData();
 
-function togglePaid(id){
-
-    const item =
-        items.find(x => x.id === id);
-
-    if(item){
-
-        item.paid =
-            !item.paid;
-
-        saveData();
-
-        render();
-
-    }
+    render();
 
 }
 
 
 /* =========================
-   顯示狀態
+   訂單統計
 ========================= */
 
-function statusText(item){
+function getOrderStats(order){
 
-    let html = "";
+    let total = 0;
 
+    let bought = 0;
 
-    if(item.bought){
+    let out = 0;
 
-        html += `
-            <span class="badge active">
-                ✓ 已購買
-            </span>
-        `;
+    let unpaid = 0;
 
-    }else{
+    order.items.forEach(item => {
 
-        html += `
-            <span class="badge">
-                ⏳ 未購買
-            </span>
-        `;
+        const price =
+            Number(item.price || 0);
 
-    }
+        total += price;
 
+        if(item.bought){
+            bought += price;
+        }
 
-    if(item.out){
+        if(item.out){
+            out += price;
+        }
 
-        html += `
-            <span class="badge out">
-                × 沒貨
-            </span>
-        `;
+        if(!item.paid){
+            unpaid += price;
+        }
 
-    }
+    });
 
 
-    if(item.paid){
-
-        html += `
-            <span class="badge active">
-                ✓ 已付
-            </span>
-        `;
-
-    }else{
-
-        html += `
-            <span class="badge">
-                ○ 未付
-            </span>
-        `;
-
-    }
-
-
-    return html;
+    return {
+        total,
+        bought,
+        out,
+        unpaid
+    };
 
 }
 
 
 /* =========================
-   渲染
+   顯示
 ========================= */
 
 function render(){
@@ -1321,18 +1209,38 @@ function render(){
     list.innerHTML = "";
 
 
-    /* 統計 */
+    /* 全部統計 */
 
-    const all = items.length;
+    let all = 0;
 
-    const bought =
-        items.filter(x => x.bought).length;
+    let bought = 0;
 
-    const out =
-        items.filter(x => x.out).length;
+    let out = 0;
 
-    const unpaid =
-        items.filter(x => !x.paid).length;
+    let unpaid = 0;
+
+
+    orders.forEach(order => {
+
+        order.items.forEach(item => {
+
+            all++;
+
+            if(item.bought){
+                bought++;
+            }
+
+            if(item.out){
+                out++;
+            }
+
+            if(!item.paid){
+                unpaid++;
+            }
+
+        });
+
+    });
 
 
     document.getElementById("allCount").innerText =
@@ -1348,14 +1256,14 @@ function render(){
         unpaid;
 
 
-    /* 篩選 */
+    /* 篩選訂單 */
 
     const filtered =
-        items.filter(matchFilter);
+        orders.filter(orderMatches);
 
 
     document.getElementById("totalText").innerText =
-        filtered.length + " 筆";
+        filtered.length + " 位客人";
 
 
     if(filtered.length === 0){
@@ -1371,59 +1279,10 @@ function render(){
     }
 
 
-    /* =========================
-       依客人分組
-    ========================= */
+    filtered.forEach(order => {
 
-    const groups = {};
-
-    filtered.forEach(item => {
-
-        const name =
-            item.customer || "未填寫姓名";
-
-        if(!groups[name]){
-            groups[name] = [];
-        }
-
-        groups[name].push(item);
-
-    });
-
-
-    Object.keys(groups).forEach(customer => {
-
-        const customerItems =
-            groups[customer];
-
-
-        let totalPrice = 0;
-
-        let boughtPrice = 0;
-
-        let outPrice = 0;
-
-        let unpaidPrice = 0;
-
-
-        customerItems.forEach(item => {
-
-            totalPrice += Number(item.price || 0);
-
-            if(item.bought){
-                boughtPrice += Number(item.price || 0);
-            }
-
-            if(item.out){
-                outPrice += Number(item.price || 0);
-            }
-
-            if(!item.paid){
-                unpaidPrice += Number(item.price || 0);
-            }
-
-        });
-
+        const stats =
+            getOrderStats(order);
 
         const card =
             document.createElement("div");
@@ -1439,43 +1298,74 @@ function render(){
             <div class="customer-head">
 
                 <div class="customer-name">
-                    👤 ${escapeHTML(customer)}
+                    👤 ${
+                        escapeHTML(
+                            order.customer ||
+                            "未填寫姓名"
+                        )
+                    }
                 </div>
 
                 <div class="customer-summary">
 
-                    <span>
-                        共 <strong>
-                            ₩${totalPrice.toLocaleString()}
-                        </strong>
-                    </span>
+                    <div class="summary-box">
 
-                    <span>
-                        約 <strong>
-                            NT$${toTWD(totalPrice).toLocaleString()}
-                        </strong>
-                    </span>
+                        <div class="summary-label">
+                            訂單總額
+                        </div>
 
-                    <span>
-                        已購
-                        <strong>
-                            ₩${boughtPrice.toLocaleString()}
-                        </strong>
-                    </span>
+                        <div class="summary-value">
+                            ₩${stats.total.toLocaleString()}
+                        </div>
 
-                    <span>
-                        沒貨
-                        <strong>
-                            ₩${outPrice.toLocaleString()}
-                        </strong>
-                    </span>
+                    </div>
 
-                    <span>
-                        未付
-                        <strong>
-                            ₩${unpaidPrice.toLocaleString()}
-                        </strong>
-                    </span>
+                    <div class="summary-box">
+
+                        <div class="summary-label">
+                            台幣約
+                        </div>
+
+                        <div class="summary-value">
+                            NT$${toTWD(stats.total).toLocaleString()}
+                        </div>
+
+                    </div>
+
+                    <div class="summary-box">
+
+                        <div class="summary-label">
+                            已購買
+                        </div>
+
+                        <div class="summary-value">
+                            ₩${stats.bought.toLocaleString()}
+                        </div>
+
+                    </div>
+
+                    <div class="summary-box">
+
+                        <div class="summary-label">
+                            未付
+                        </div>
+
+                        <div class="summary-value">
+                            ₩${stats.unpaid.toLocaleString()}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div style="margin-top:9px;text-align:right;">
+
+                    <button
+                        class="small-btn"
+                        onclick="deleteOrder(${order.id})"
+                    >
+                        刪除整張訂單
+                    </button>
 
                 </div>
 
@@ -1484,9 +1374,9 @@ function render(){
         `;
 
 
-        /* 每個品項 */
+        /* 品項 */
 
-        customerItems.forEach(item => {
+        order.items.forEach(item => {
 
             const div =
                 document.createElement("div");
@@ -1495,21 +1385,72 @@ function render(){
                 "item";
 
 
+            let badges = "";
+
+
+            if(item.bought){
+
+                badges += `
+                    <span class="badge active">
+                        ✓ 已購買
+                    </span>
+                `;
+
+            }else{
+
+                badges += `
+                    <span class="badge">
+                        ⏳ 未購買
+                    </span>
+                `;
+
+            }
+
+
+            if(item.out){
+
+                badges += `
+                    <span class="badge out">
+                        × 沒貨
+                    </span>
+                `;
+
+            }
+
+
+            if(item.paid){
+
+                badges += `
+                    <span class="badge active">
+                        ✓ 已付
+                    </span>
+                `;
+
+            }else{
+
+                badges += `
+                    <span class="badge">
+                        ○ 未付
+                    </span>
+                `;
+
+            }
+
+
             div.innerHTML = `
 
                 <div class="item-main">
 
-                    <div>
+                    <div class="item-name">
 
-                        <div class="item-name">
-                            ${escapeHTML(
+                        ${
+                            escapeHTML(
                                 item.product ||
                                 "未填寫品項"
-                            )}
-                        </div>
+                            )
+                        }
 
                     </div>
-
 
                     <div class="item-price">
 
@@ -1533,45 +1474,50 @@ function render(){
                 <div class="item-status">
 
                     <div class="badges">
-
-                        ${statusText(item)}
-
+                        ${badges}
                     </div>
-
 
                     <div class="actions">
 
                         <button
                             class="small-btn"
-                            onclick="toggleBought(${item.id})"
+                            onclick="toggleItem(
+                                ${order.id},
+                                ${item.id},
+                                'bought'
+                            )"
                         >
                             ✓
                         </button>
 
                         <button
                             class="small-btn"
-                            onclick="toggleOut(${item.id})"
+                            onclick="toggleItem(
+                                ${order.id},
+                                ${item.id},
+                                'out'
+                            )"
                         >
                             ×
                         </button>
 
                         <button
                             class="small-btn"
-                            onclick="togglePaid(${item.id})"
+                            onclick="toggleItem(
+                                ${order.id},
+                                ${item.id},
+                                'paid'
+                            )"
                         >
-                            ₩
+                            $
                         </button>
 
                         <button
                             class="small-btn"
-                            onclick="editItem(${item.id})"
-                        >
-                            編輯
-                        </button>
-
-                        <button
-                            class="small-btn delete-btn"
-                            onclick="deleteItem(${item.id})"
+                            onclick="deleteItem(
+                                ${order.id},
+                                ${item.id}
+                            )"
                         >
                             刪除
                         </button>
@@ -1596,7 +1542,7 @@ function render(){
 
 
 /* =========================
-   防止 HTML 文字造成問題
+   防止特殊字元
 ========================= */
 
 function escapeHTML(text){
@@ -1612,7 +1558,7 @@ function escapeHTML(text){
 
 
 /* =========================
-   初始
+   初始顯示
 ========================= */
 
 render();
